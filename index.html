@@ -1,12 +1,30 @@
-<!DOCTYPE html>
-<html lang="hu">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kosárlabda mérkőzés jegyzőkönyv</title>
+<script type="text/javascript">
+var c=0;
+var minutes= 0;
+var t;
+
+function timedCount()
+{
+    document.getElementById('txt').value='minutes:'+ minutes + ' seconds: '+ c;
+    c=c+1;
+    if (c%60==0) {    minutes+=1;       c=0;   }
+    t=setTimeout("timedCount()",1000);
+}
+
+function doTimer()   {  timedCount();   }
+function stopTimer() { clearTimeout(t); }
+
+</script> 
 </head>
+
 <body>
-    
+<form>
+<input type="button" value="Start count!" onClick="doTimer()">
+<input type="button" value="Stop count!" onClick="stopTimer()">
+<input type="text" id="txt">
+</form>
+<p>Click on the button above. The input field will count forever, starting at 0.</p>
 </body>
 </html>
