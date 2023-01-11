@@ -12,6 +12,8 @@
 </head>
 
 <script type="text/javascript">
+  var startstate = false
+  var stopstate = true
   var minutes= 0;
   var seconds = 0;
   var time;
@@ -21,6 +23,7 @@
   /*-----------------------*/
   function timedCount() {
     document.getElementById('szamlalo').value= minutes+":"+seconds;
+    startstate = true;
     document.getElementById('negyedelo').value= (((minutes / 15) | 0) +1 )+". negyed";
     ++seconds;
     if (seconds %60 ==0) { ++minutes; seconds=0; }
@@ -28,9 +31,13 @@
     time = setTimeout("timedCount()",1000);
   }
 
-  function doTimer()   {  timedCount();   }
-  function stopTimer() { clearTimeout(t); }
-         
+  if (!startstate) {
+    function doTimer()   {  timedCount();   }
+  }
+  if (!stopstate) {
+    function stopTimer() { clearTimeout(t); }
+  }     
+
   /*--------------------------------------------------*/
   function ajax_get( urlsor, hova, tipus, aszinkron ) {
     $.ajax({url: urlsor, type:"get", async:aszinkron, cache:false, dataType:tipus===0?'html':'json',
