@@ -26,6 +26,9 @@
 
     time=setTimeout("timedCount()",1000);
   }
+
+  function doTimer()   {  timedCount();   }
+  function stopTimer() { clearTimeout(t); }
          
   /*--------------------------------------------------*/
   function ajax_get( urlsor, hova, tipus, aszinkron ) {
@@ -65,9 +68,14 @@
 
   <div class="p-3 bg-primary text-white text-center">
     <h2>11SZ - Kosárlabda mérkőzés jegyzőkönyv</h2>
-    <h3><i>... ide kerül az alkotók neve </i>(ver.: 2022.12)</H3>
+    <h3><i> Farkas Bálint, Mózes Rajmund, Tóth Máté </i>(ver.: 2023.01)</H3>
   </div>
 
+  <form>
+  <input type="button" value="START!" onClick="doTimer()">
+  <input type="button" value="STOP!" onClick="stopTimer()">
+  <input type="text" id="txt">
+  </form>
   
 
 </body>
