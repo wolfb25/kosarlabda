@@ -1,30 +1,74 @@
-<html>
+<!DOCTYPE html>
+<html lang="hu">
+
 <head>
-<script type="text/javascript">
-var c=0;
-var minutes= 0;
-var t;
-
-function timedCount()
-{
-    document.getElementById('txt').value='minutes:'+ minutes + ' seconds: '+ c;
-    c=c+1;
-    if (c%60==0) {    minutes+=1;       c=0;   }
-    t=setTimeout("timedCount()",1000);
-}
-
-function doTimer()   {  timedCount();   }
-function stopTimer() { clearTimeout(t); }
-
-</script> 
+  <title>Kosárlabda</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" rel="stylesheet" >
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="jquery-3.6.0.min.js"></script>
 </head>
 
+<script type="text/javascript">
+  var minutes= 0;
+  var seconds = 1;
+  var time;
+  var hazai_pontok  = 0;
+  var vendég_pontok = 0;
+  
+  /*-----------------------*/
+  function timedCount() {
+    $("#idő").html(minutes+":"+seconds+"<br>"+(((minutes / 15) | 0) +1 )+". negyed");
+    ++seconds;
+    if (seconds %60 ==0) { ++minutes; seconds=0; }
+
+    time=setTimeout("timedCount()",1000);
+  }
+         
+  /*--------------------------------------------------*/
+  function ajax_get( urlsor, hova, tipus, aszinkron ) {
+    $.ajax({url: urlsor, type:"get", async:aszinkron, cache:false, dataType:tipus===0?'html':'json',
+        beforeSend:function(xhr)   {  }, 
+        success:   function(data)  { $(hova).html(data); },
+        error:     function(jqXHR, textStatus, errorThrown) {console.log(jqXHR.responseText);},
+        complete:  function()      {  }   
+    });
+    return true;
+  };
+
+  /*-----------------------------------*/
+  function ajax_post( urlsor, data, tipus  ) {     // !! változás: data
+    var s = "";
+    $.ajax({url: urlsor, type:"post", data:data, async:false, cache:false, dataType:tipus===0?'html':'json',
+        beforeSend:function(xhr)   {  }, 
+        success:   function(data)  { s = data; },
+        error:     function(jqXHR, textStatus, errorThrown) {console.log(jqXHR.responseText);},
+        complete:  function()      {  } 
+    });
+    return s;
+  };  
+
+  /*-----------------------------*/
+  $(document).ready(function() {
+
+    var listItems   = ""; 
+    var k_json = ajax_post("kosar.php", "csapatok=1", 1 );               // JSON!
+    console.log(k_json);
+
+  });
+
+</script>
+
 <body>
-<form>
-<input type="button" value="Start count!" onClick="doTimer()">
-<input type="button" value="Stop count!" onClick="stopTimer()">
-<input type="text" id="txt">
-</form>
-<p>Click on the button above. The input field will count forever, starting at 0.</p>
+
+  <div class="p-3 bg-primary text-white text-center">
+    <h2>11SZ - Kosárlabda mérkőzés jegyzőkönyv</h2>
+    <h3><i>... ide kerül az alkotók neve </i>(ver.: 2022.12)</H3>
+  </div>
+
+  
+
 </body>
 </html>
