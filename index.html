@@ -26,6 +26,9 @@
 
     time=setTimeout("timedCount()",1000);
   }
+
+  function doTimer()   {  timedCount();   }
+  function stopTimer() { clearTimeout(t); }
          
   /*--------------------------------------------------*/
   function ajax_get( urlsor, hova, tipus, aszinkron ) {
@@ -69,8 +72,8 @@
   </div>
 
   <form>
-  <input type="button" value="Start count!" onClick="doTimer()">
-  <input type="button" value="Stop count!" onClick="stopTimer()">
+  <input type="button" value="START!" onClick="doTimer()">
+  <input type="button" value="STOP!" onClick="stopTimer()">
   <input type="text" id="txt">
   </form>
   
