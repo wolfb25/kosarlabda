@@ -12,8 +12,8 @@
 </head>
 
 <script type="text/javascript">
-  var minutes= 14;
-  var seconds = 55;
+  var minutes= 0;
+  var seconds = 0;
   var time;
   var hazai_pontok  = 0;
   var vendég_pontok = 0;
@@ -24,8 +24,6 @@
     document.getElementById('negyedelo').value= (((minutes / 15) | 0) +1 )+". negyed";
     ++seconds;
     if (seconds %60 ==0) { ++minutes; seconds=0; }
-
-    if (minutes == 15 && seconds == 0) { function stopTimer() { clearTimeout(time); } }
 
     time = setTimeout("timedCount()",1000);
   }
