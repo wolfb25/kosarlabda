@@ -13,18 +13,18 @@
 
 <script type="text/javascript">
   var minutes= 0;
-  var seconds = 1;
+  var seconds = 0;
   var time;
   var hazai_pontok  = 0;
   var vendég_pontok = 0;
   
   /*-----------------------*/
   function timedCount() {
-    $("#idő").html(minutes+":"+seconds+"<br>"+(((minutes / 15) | 0) +1 )+". negyed");
+    document.getElementById('szamlalo').value=$("#idő").html(minutes+":"+seconds+"<br>"+(((minutes / 15) | 0) +1 )+". negyed");
     ++seconds;
     if (seconds %60 ==0) { ++minutes; seconds=0; }
 
-    time=setTimeout("timedCount()",1000);
+    time = setTimeout("timedCount()",1000);
   }
 
   function doTimer()   {  timedCount();   }
@@ -74,7 +74,7 @@
   <form>
   <input type="button" value="START!" onClick="doTimer()">
   <input type="button" value="STOP!" onClick="stopTimer()">
-  <input type="text" id="txt">
+  <input type="text" id="szamlalo">
   </form>
   
 
