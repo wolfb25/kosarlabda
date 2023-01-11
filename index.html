@@ -20,7 +20,8 @@
   
   /*-----------------------*/
   function timedCount() {
-    document.getElementById('szamlalo').value=$("#idő").html(minutes+":"+seconds+"<br>"+(((minutes / 15) | 0) +1 )+". negyed");
+    document.getElementById('szamlalo').value= minutes+":"+seconds;
+    document.getElementById('negyedelo').value= (((minutes / 15) | 0) +1 )+". negyed";
     ++seconds;
     if (seconds %60 ==0) { ++minutes; seconds=0; }
 
@@ -75,6 +76,7 @@
   <input type="button" value="START!" onClick="doTimer()">
   <input type="button" value="STOP!" onClick="stopTimer()">
   <input type="text" id="szamlalo">
+  <input type="text" id="negyedelo">
   </form>
   
 
