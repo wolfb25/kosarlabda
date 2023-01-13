@@ -19,29 +19,38 @@
 			<h1 class="text-center">Kosárlabda mérkőzés jegyzőkönyv</h1>
 			<div class="row">
 				<div class="col-sm-6">
-					<div class="btn-group">
-						<button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Hazai</button>
+					<div class="btn-group d-flex justify-content-center">
+						<button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown">Hazai</button>
 						<div class="dropdown-menu">
-							<!-- elemek ide -->
+							<a class="dropdown-item" href="#">1. opció</a>
 						</div>
+					</div>
+					<div class="d-flex justify-content-around">
+						<div class="col-4 bg-white p-2" style="height: 20px;"></div>
+						<div class="col-4 bg-black p-2" style="height: 20px;"></div>
 					</div>
 				</div>
 				<div class="col-sm-6">
-					<div class="btn-group">
-						<button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Hazai</button>
+					<div class="btn-group d-flex justify-content-center">
+						<button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown">Vendég</button>
 						<div class="dropdown-menu">
+							<a class="dropdown-item" href="#">1. opció</a>
 							<!-- elemek ide -->
 						</div>
+					</div>
+					<div class="d-flex justify-content-around">
+						<div class="col-4 bg-white p-2" style="height: 20px;"></div>
+						<div class="col-4 bg-black p-2" style="height: 20px;"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-2 bg-info">
 			<form>
-				<input type="button" value="START!" onClick="doTimer()">
-				<input type="button" value="STOP!" onClick="stopTimer()">
-				<input type="text" id="szamlalo">
-				<input type="text" id="negyedelo">
+				<input type="button" value="START!" onClick="doTimer()" class="btn btn-light">
+				<input type="button" value="STOP" onClick="stopTimer()" class="btn btn-light">
+				<p id="szamlalo"></p>
+				<p id="negyedelo"></p>
 			</form>
 		</div>
 	</div>
