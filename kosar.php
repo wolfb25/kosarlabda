@@ -226,14 +226,17 @@ $játékosok = array(
     } 
     $s = "[".substr($s, 0, -1)."]";
     header('Content-Type: application/json; charset=utf-8');
-    echo ($s);
+    echo console.log($s);
  }
 
 
-if ( isset($_POST["ID_CSAPAT"]) and isset($csapatok[$_POST["ID_CSAPAT"]]) )
-{  
+if ( isset($_POST["ID_CSAPAT"]) and isset($csapatok[$_POST["ID_CSAPAT"]]) ){  
 
    
 }
 
 ?>
+
+foreach ($csapatok as $key => $value) {
+   echo "$key<br>"
+}
