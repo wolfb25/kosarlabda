@@ -17,47 +17,82 @@
 	<div class="row m-0">
 		<div class="col-lg-10 bg-primary">
 			<h1 class="text-center">Kosárlabda mérkőzés jegyzőkönyv</h1>
-			<div class="row m-0">
+			<div class="row">
 				<div class="col-md-6">
-					<div class="btn-group d-flex justify-content-center">
+					<!-- <div class="btn-group d-flex justify-content-center">
 						<button type="button" class="btn btn-light dropdown-toggle mb-3" data-bs-toggle="dropdown" style="max-width: 200px;">Hazai</button>
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="#">1. opció</a>
-							<!-- elemek ide -->
 						</div>
-					</div>
+					</div> -->
+					<select class="form-select d-flex justify-content-center mb-3" style="max-width: 250px;">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+					</select>
 					<div class="d-flex justify-content-around mb-3">
-						<div class="col-4 bg-white p-2" style="height: 200px;">
-							<!-- játékosok kispadon -->
+						<div class="col-4">
+							<select multiple class="form-select">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+							</select>
 						</div>
+
 						<div class="col-1 d-flex flex-column align-content-around">
-							<button type="button" class="btn btn-success mb-3 mt-3">&gt;&gt;</button>
+							<button type="button" class="btn btn-success mb-3 mt-1">&gt;&gt;</button>
 							<button type="button" class="btn btn-danger">&lt;&lt;</button>
 						</div>
-						<div class="col-4 bg-black p-2" style="height: 200px;">
-							<!-- játékosok pályán -->
+						<div class="col-4">
+							<select multiple class="form-select">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+							</select>
 						</div>
+					</div>
+					<div class="d-flex flex-row mb-3">
+						<div class="h5">Pont hozzáadás:</div>
+						<input type="number" id="pontszam-vendeg" name="pontszam" min="1" max="3" style="width: 75px;">
+						<button type="button" class="btn btn-success">✔</button>
 					</div>
 				</div>
 				<div class="col-md-6">
-					<div class="btn-group d-flex justify-content-center">
-						<button type="button" class="btn btn-light dropdown-toggle mb-3" data-bs-toggle="dropdown" style="max-width: 200px;">Vendég</button>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">1. opció</a>
-							<!-- elemek ide -->
-						</div>
-					</div>
+					<select class="form-select d-flex justify-content-center mb-3" style="max-width: 250px;">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+					</select>
 					<div class="d-flex justify-content-around mb-3">
-						<div class="col-4 bg-white p-2" style="height: 200px;">
-							<!-- játékosok kispadon -->
+						<div class="col-4">
+							<select multiple class="form-select">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+							</select>
 						</div>
 						<div class="col-1 d-flex flex-column align-content-around">
-							<button type="button" class="btn btn-success mb-3 mt-3">&gt;&gt;</button>
+							<button type="button" class="btn btn-success mb-3 mt-1">&gt;&gt;</button>
 							<button type="button" class="btn btn-danger">&lt;&lt;</button>
 						</div>
-						<div class="col-4 bg-black p-2" style="height: 200px;">
-							<!-- játékosok pályán -->
+						<div class="col-4">
+							<select multiple class="form-select">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+							</select>
 						</div>
+					</div>
+					<div class="d-flex flex-row mb-3">
+						<div class="h5">Pont hozzáadás:</div>
+						<input type="number" id="pontszam-vendeg" name="pontszam" min="1" max="3" style="width: 75px;">
+						<button type="button" class="btn btn-success">✔</button>
 					</div>
 				</div>
 			</div>
