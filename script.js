@@ -1,5 +1,5 @@
-var minutes = 14;
-var seconds = 55;
+var minutes = 0;
+var seconds = 0;
 var time;
 var hazai_pontok = 0;
 var vendég_pontok = 0;
@@ -50,8 +50,6 @@ function ajax_post(urlsor, data, tipus) {     // !! változás: data
 
 /*-----------------------------*/
 $(document).ready(function () {
-	var csapat = s;
-	console.log(s);
 	var listItems = "";
 	var k_json = ajax_post("kosar.php", "csapatok=1", 1);               // JSON!
 	console.log(k_json);
