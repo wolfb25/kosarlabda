@@ -9,43 +9,60 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" rel="stylesheet" >
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="script.js" defer></script>
 </head>
 
 
 <body>
 	<div class="row">
-		<div class="col-md-10 bg-primary">
+		<div class="col-lg-10 bg-primary">
 			<h1 class="text-center">Kosárlabda mérkőzés jegyzőkönyv</h1>
 			<div class="row">
-				<div class="col-sm-6">
+				<div class="col-md-6">
 					<div class="btn-group d-flex justify-content-center">
-						<button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown">Hazai</button>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">1. opció</a>
-						</div>
-					</div>
-					<div class="d-flex justify-content-around">
-						<div class="col-4 bg-white p-2" style="height: 20px;"></div>
-						<div class="col-4 bg-black p-2" style="height: 20px;"></div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="btn-group d-flex justify-content-center">
-						<button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown">Vendég</button>
+						<button type="button" class="btn btn-light dropdown-toggle mb-3" data-bs-toggle="dropdown" style="max-width: 200px;">Hazai</button>
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="#">1. opció</a>
 							<!-- elemek ide -->
 						</div>
 					</div>
-					<div class="d-flex justify-content-around">
-						<div class="col-4 bg-white p-2" style="height: 20px;"></div>
-						<div class="col-4 bg-black p-2" style="height: 20px;"></div>
+					<div class="d-flex justify-content-around mb-3">
+						<div class="col-4 bg-white p-2" style="height: 200px;">
+							<!-- játékosok kispadon -->
+						</div>
+						<div class="col-1 d-flex flex-column align-content-around">
+							<button type="button" class="btn btn-success mb-3 mt-3">&gt;&gt;</button>
+							<button type="button" class="btn btn-danger">&lt;&lt;</button>
+						</div>
+						<div class="col-4 bg-black p-2" style="height: 200px;">
+							<!-- játékosok pályán -->
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="btn-group d-flex justify-content-center">
+						<button type="button" class="btn btn-light dropdown-toggle mb-3" data-bs-toggle="dropdown" style="max-width: 200px;">Vendég</button>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="#">1. opció</a>
+							<!-- elemek ide -->
+						</div>
+					</div>
+					<div class="d-flex justify-content-around mb-3">
+						<div class="col-4 bg-white p-2" style="height: 200px;">
+							<!-- játékosok kispadon -->
+						</div>
+						<div class="col-1 d-flex flex-column align-content-around">
+							<button type="button" class="btn btn-success mb-3 mt-3">&gt;&gt;</button>
+							<button type="button" class="btn btn-danger">&lt;&lt;</button>
+						</div>
+						<div class="col-4 bg-black p-2" style="height: 200px;">
+							<!-- játékosok pályán -->
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-2 bg-info">
+		<div class="col-lg-2 bg-info">
 			<form>
 				<input type="button" value="START!" onClick="doTimer()" class="btn btn-light">
 				<input type="button" value="STOP" onClick="stopTimer()" class="btn btn-light">
