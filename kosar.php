@@ -4,7 +4,7 @@ $csapatok = array(
         "ALBA"=> "Arconic-Alba Fehérvár",
         "PAKS"=> "Atomerőmű SE",
         "BUDAPEST"=> "Budapesti Honvéd Sportegyesület",
-        "DEBRECEN"=> "DEAC",
+        "DEAC"=> "DEBRECEN",
         "KECSKE"=> "Duna Aszfalt-DTKH Kecskemét",
         "KÖRMEND"=> "Egis Körmend",
         "FALCO"=> "Falco-Vulcano Energia KC Szombathely",
@@ -226,17 +226,21 @@ $játékosok = array(
     } 
     $s = "[".substr($s, 0, -1)."]";
     header('Content-Type: application/json; charset=utf-8');
-    echo console.log($s);
+    echo ($s);
  }
-
-
-if ( isset($_POST["ID_CSAPAT"]) and isset($csapatok[$_POST["ID_CSAPAT"]]) ){  
-
-   
+ if ( isset($_POST["ID_CSAPAT"]) and isset($csapatok[$_POST["ID_CSAPAT"]]) ){
+   $s1 = "";
+   $s1 = "{\"Jatekosok\":\"";
+   foreach($játékosok as $key1) { 
+      if($_POST["ID_CSAPAT"] == $key1[0]){
+         $s1 .= "<option>".$key1[2]."</option>";
+      }
+   }
+   $s1 .= "\"}";
+   header('Content-Type: application/json; charset=utf-8');
+   echo ($s1);
 }
+
+
 
 ?>
-
-foreach ($csapatok as $key => $value) {
-   echo "$key<br>"
-}

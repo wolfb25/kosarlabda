@@ -11,7 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" rel="stylesheet" >
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="script.js" defer></script>
+<script type="text/javascript" src="script.js"></script>
 </head>
 
 
@@ -27,19 +27,12 @@
 							<a class="dropdown-item" href="#">1. opció</a>
 						</div>
 					</div> -->
-					<select class="form-select d-flex justify-content-center mb-3" style="max-width: 250px;">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
+					<select class="form-select d-flex justify-content-center mb-3" style="max-width: 250px;" id="hazaiselect">
+						<option>---</option>
 					</select>
 					<div class="d-flex justify-content-around mb-3">
 						<div class="col-4">
-							<select multiple class="form-select">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
+							<select multiple class="form-select" id="hazaiplayer">
 							</select>
 						</div>
 
@@ -63,19 +56,12 @@
 					</div>
 				</div>
 				<div class="col-md-6">
-					<select class="form-select d-flex justify-content-center mb-3" style="max-width: 250px;">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
+					<select class="form-select d-flex justify-content-center mb-3" style="max-width: 250px;" id="vendegselect">
+						<option>---</option>
 					</select>
 					<div class="d-flex justify-content-around mb-3">
 						<div class="col-4">
-							<select multiple class="form-select">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
+							<select multiple class="form-select" id="vendegplayer">
 							</select>
 						</div>
 						<div class="col-1 d-flex flex-column align-content-around">
@@ -103,8 +89,7 @@
 			<form>
 				<input type="button" value="START!" onClick="doTimer()" class="btn btn-light">
 				<input type="button" value="STOP" onClick="stopTimer()" class="btn btn-light">
-				<p id="szamlalo"></p>
-				<p id="negyedelo"></p>
+				<div id="app"></div>
 			</form>
 		</div>
 	</div>
