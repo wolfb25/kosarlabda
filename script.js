@@ -6,12 +6,18 @@ var vendég_pontok = 0;
 
 /*-----------------------*/
 function timedCount() {
-	document.getElementById('szamlalo').value = minutes + ":" + seconds;
-	document.getElementById('negyedelo').value = (((minutes / 15) | 0) + 1) + ". negyed";
+	document.getElementById('szamlalo').textContent = minutes + ":" + seconds;
+	//document.getElementById('hazai').textContent = kosar.php?request=csapatok;
+	document.getElementById('negyedelo').textContent = (((minutes / 15) | 0) + 1) + ". negyed";
 	++seconds;
 	if (seconds % 60 == 0) { ++minutes; seconds = 0; }
-
 	time = setTimeout("timedCount()", 1000);
+	if (minutes % 15 == 0 && seconds == 0) { 
+		minutes = Math.round(minutes / 15) * 15;
+		seconds = 0;
+		clearTimeout(time);
+	}
+
 }
 
 function doTimer() { timedCount(); }
@@ -44,9 +50,8 @@ function ajax_post(urlsor, data, tipus) {     // !! változás: data
 
 /*-----------------------------*/
 $(document).ready(function () {
-
 	var listItems = "";
 	var k_json = ajax_post("kosar.php", "csapatok=1", 1);               // JSON!
 	console.log(k_json);
-
+	
 });
