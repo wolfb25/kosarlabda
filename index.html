@@ -37,7 +37,7 @@
 						</div>
 
 						<div class="col-1 d-flex align-content-center justify-content-center">
-							<button type="button" class="btn btn-danger mb-3 mt-1">⇋</button>
+							<button type="button" class="btn btn-danger mb-3 mt-1" onClick="hazaicsere()">⇋</button>
 						</div>
 						<div class="col-5">
 							<select multiple class="form-select h-100">
@@ -61,7 +61,7 @@
 							</select>
 						</div>
 						<div class="col-1 d-flex align-content-center justify-content-center">
-							<button type="button" class="btn btn-danger mb-3 mt-1">⇋</button>
+							<button type="button" class="btn btn-danger mb-3 mt-1" onClick="vendegcsere()">⇋</button>
 						</div>
 						<div class="col-5">
 							<select multiple class="form-select h-100">
@@ -78,12 +78,19 @@
 			</div>
 		</div>
 		<div class="col-lg-2 bg-info">
-			<form>
+			<div>
+				<label for="birok">Bírók:</label>
+				<textarea class="form-control" rows="5" id="birok" name="text"></textarea>
+			</div>
+			<div>
+
+			</div>
+			<div>
 				<input type="button" value="START!" onClick="doTimer()" class="btn btn-light">
 				<input type="button" value="STOP" onClick="stopTimer()" class="btn btn-light">
 				<p id="negyedelo"></p>
 				<p id="szamlalo"></p>
-			</form>
+			</div>
 		</div>
 	</div>
 
