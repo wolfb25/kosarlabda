@@ -48,11 +48,16 @@ function ajax_post(urlsor, data, tipus) {     // !! változás: data
 	return s;
 };
 
+function sameteams(h, v) {
+	//console.log("x", h, v);
+	if (h == v) console.error("Nem játszhat maga ellen!");
+}
+
 /*-----------------------------*/
 $(document).ready(function () {
 	var listItems = "";
 	var k_json = ajax_post("kosar.php", "csapatok=1", 1);               // JSON!
-	console.log(k_json);
+	//console.log(k_json);
 	let hazai = document.getElementById("hazaiselect");
 	let vendeg = document.getElementById("vendegselect");
 	k_json.forEach(e => {
@@ -65,17 +70,25 @@ $(document).ready(function () {
 		hazai.add(option1);
 		vendeg.add(option2);
 	});
+
 	$("#hazaiselect").change(function(){
+		//console.log("cserélt")
 		let val1 = $("#hazaiselect option:selected").val();
 		let csapat = ajax_post("kosar.php", `ID_CSAPAT=${val1}`, 1)
 		console.log(csapat)
+		if (sameteams(hazai.value, vendeg.value)) { 
+			$("#hazaiselect").val("").change();
+
+		}
 		let player = document.getElementById("hazaiplayer");
 		player.innerHTML = csapat["Jatekosok"]
 	})
+
 	$("#vendegselect").change(function(){
 		let val2 = $("#vendegselect option:selected").val();
 		let csapat1 = ajax_post("kosar.php", `ID_CSAPAT=${val2}`, 1)
 		console.log(csapat1)
+		if (sameteams(hazai.value, vendeg.value)) $("#vendegselect").val("").change();
 		let player1 = document.getElementById("vendegplayer");
 		player1.innerHTML = csapat1["Jatekosok"]
 	})
