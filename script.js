@@ -23,6 +23,36 @@ function timedCount() {
 function doTimer() { timedCount(); }
 function stopTimer() { clearTimeout(time); }
 
+/*------------------------------*/
+var maxplayers = 5;
+var palyaplayers = 0;
+
+let hazai = document.getElementById("hazaiselect");
+let hazaip = document.getElementById("hazaipalya");
+let vendeg = document.getElementById("vendegselect");
+let vendegp = document.getElementById("vendegpalya");
+
+function hazaipalyara() {
+	if (palyaplayers < maxplayers) {
+		const hazaivalasztott = hazai.options[hazai.selectedIndex];
+		hazaip.append(hazaivalasztott);
+	}
+	if (palyaplayers == maxplayers) {
+
+	}
+}
+
+function vendegpalyara() {
+	if (palyaplayers < maxplayers) {
+
+	}
+	if (palyaplayers == maxplayers) {
+		
+	}
+}
+
+function hazaicsere () { hazaipalyara(); }
+function vendegcsere () { vendegpalyara(); }
 /*--------------------------------------------------*/
 function ajax_get(urlsor, hova, tipus, aszinkron) {
 	$.ajax({
@@ -72,14 +102,10 @@ $(document).ready(function () {
 	});
 
 	$("#hazaiselect").change(function(){
-		//console.log("cserélt")
 		let val1 = $("#hazaiselect option:selected").val();
 		let csapat = ajax_post("kosar.php", `ID_CSAPAT=${val1}`, 1)
 		console.log(csapat)
-		if (sameteams(hazai.value, vendeg.value)) { 
-			$("#hazaiselect").val("").change();
-
-		}
+		if (sameteams(hazai.value, vendeg.value)) $("#hazaiselect").val("").change();
 		let player = document.getElementById("hazaiplayer");
 		player.innerHTML = csapat["Jatekosok"]
 	})
@@ -92,4 +118,7 @@ $(document).ready(function () {
 		let player1 = document.getElementById("vendegplayer");
 		player1.innerHTML = csapat1["Jatekosok"]
 	})
+
+
+
 });
