@@ -79,7 +79,6 @@ function ajax_get(urlsor, hova, tipus, aszinkron) {
 	});
 	return true;
 };
-
 /*-----------------------------------*/
 function ajax_post(urlsor, data, tipus) {     // !! változás: data
 	var s = "";
@@ -95,9 +94,16 @@ function ajax_post(urlsor, data, tipus) {     // !! változás: data
 
 function sameteams(h, v) {
 	//console.log("x", h, v);
-	if (h == v) { console.error("Nem játszhat maga ellen!"); }
+	if (h == v) { 
+		console.error("Nem játszhat maga ellen!");
+		triggerError("Nem játszhat maga ellen!");
+	}
 }
 
+function triggerError(message) {
+	document.getElementById("errorMessageContent").innerHTML = message;
+	$("#errorMessage").modal("show");
+}
 /*-----------------------------*/
 $(document).ready(function () {
 	var listItems = "";
