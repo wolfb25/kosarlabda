@@ -24,29 +24,44 @@ function doTimer() { timedCount(); }
 function stopTimer() { clearTimeout(time); }
 
 /*------------------------------*/
-var maxplayers = 5;
-var palyaplayers = 0;
-
-let hazai = document.getElementById("hazaiselect");
-let hazaip = document.getElementById("hazaipalya");
-let vendeg = document.getElementById("vendegselect");
-let vendegp = document.getElementById("vendegpalya");
+var maxplayershaza = 5;
+var palyaplayershaza = 0;
+var maxplayersvendeg = 5;
+var palyaplayersvendeg = 0;
 
 function hazaipalyara() {
-	if (palyaplayers < maxplayers) {
-		const hazaivalasztott = hazai.options[hazai.selectedIndex];
-		hazaip.append(hazaivalasztott);
+	let hazai2 = document.getElementById("hazaiplayer");
+	let hazaip = document.getElementById("hazaipalya");
+	console.log(hazai2)
+	if (palyaplayershaza < maxplayershaza) {
+		var hazaivalasztott = hazai2.options[hazai2.selectedIndex].text;
+		console.log(hazaivalasztott);
+		let playeradd = document.createElement("option");
+		hazaip.add(playeradd);
+		hazai2.remove(hazai2.selectedIndex);
+		playeradd.text = hazaivalasztott;
+		playeradd.value = palyaplayers;
+		palyaplayershaza++;
 	}
-	if (palyaplayers == maxplayers) {
+	if (palyaplayershaza == maxplayershaza) {
 
 	}
 }
 
 function vendegpalyara() {
-	if (palyaplayers < maxplayers) {
-
+	let vendeg2 = document.getElementById("vendegplayer");
+	let vendegp = document.getElementById("vendegpalya");
+	if (palyaplayersvendeg < maxplayersvendeg) {
+		var vendegvalasztott = vendeg2.options[vendeg2.selectedIndex].text;
+		console.log(vendegvalasztott);
+		let playeradd2 = document.createElement("option");
+		vendegp.add(playeradd2);
+		vendeg2.remove(vendeg2.selectedIndex);
+		playeradd2.text = vendegvalasztott;
+		playeradd2.value = palyaplayersvendeg;
+		palyaplayersvendeg++;
 	}
-	if (palyaplayers == maxplayers) {
+	if (palyaplayersvendeg == maxplayersvendeg) {
 		
 	}
 }
@@ -80,7 +95,7 @@ function ajax_post(urlsor, data, tipus) {     // !! változás: data
 
 function sameteams(h, v) {
 	//console.log("x", h, v);
-	if (h == v) console.error("Nem játszhat maga ellen!");
+	if (h == v) { console.error("Nem játszhat maga ellen!"); }
 }
 
 /*-----------------------------*/
@@ -107,6 +122,8 @@ $(document).ready(function () {
 		console.log(csapat)
 		if (sameteams(hazai.value, vendeg.value)) $("#hazaiselect").val("").change();
 		let player = document.getElementById("hazaiplayer");
+		$('#hazaipalya').empty()
+		palyaplayershaza = 0;
 		player.innerHTML = csapat["Jatekosok"]
 	})
 
@@ -116,6 +133,8 @@ $(document).ready(function () {
 		console.log(csapat1)
 		if (sameteams(hazai.value, vendeg.value)) $("#vendegselect").val("").change();
 		let player1 = document.getElementById("vendegplayer");
+		$('#vendegpalya').empty()
+		palyaplayersvendeg = 0;
 		player1.innerHTML = csapat1["Jatekosok"]
 	})
 
