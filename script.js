@@ -53,8 +53,14 @@ function sameteams(h, v) {
 	if (h == v) console.error("Nem játszhat maga ellen!");
 }
 
+function triggerError() {
+	document.getElementById("errorMessageContent").innerHTML = "szoveg";
+	$("#errorMessage").modal("show");
+}
+
 /*-----------------------------*/
 $(document).ready(function () {
+	triggerError();
 	var listItems = "";
 	var k_json = ajax_post("kosar.php", "csapatok=1", 1);               // JSON!
 	//console.log(k_json);
@@ -74,22 +80,22 @@ $(document).ready(function () {
 	$("#hazaiselect").change(function(){
 		//console.log("cserélt")
 		let val1 = $("#hazaiselect option:selected").val();
-		let csapat = ajax_post("kosar.php", `ID_CSAPAT=${val1}`, 1)
+		let csapat = ajax_post("kosar.php", `ID_CSAPAT=${val1}`, 1);
 		console.log(csapat)
 		if (sameteams(hazai.value, vendeg.value)) { 
 			$("#hazaiselect").val("").change();
 
 		}
 		let player = document.getElementById("hazaiplayer");
-		player.innerHTML = csapat["Jatekosok"]
-	})
+		player.innerHTML = csapat["Jatekosok"];
+	});
 
 	$("#vendegselect").change(function(){
 		let val2 = $("#vendegselect option:selected").val();
-		let csapat1 = ajax_post("kosar.php", `ID_CSAPAT=${val2}`, 1)
-		console.log(csapat1)
+		let csapat1 = ajax_post("kosar.php", `ID_CSAPAT=${val2}`, 1);
+		console.log(csapat1);
 		if (sameteams(hazai.value, vendeg.value)) $("#vendegselect").val("").change();
 		let player1 = document.getElementById("vendegplayer");
-		player1.innerHTML = csapat1["Jatekosok"]
-	})
+		player1.innerHTML = csapat1["Jatekosok"];
+	});
 });
