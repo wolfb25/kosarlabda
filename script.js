@@ -94,14 +94,10 @@ function ajax_post(urlsor, data, tipus) {     // !! változás: data
 
 function sameteams(h, v) {
 	//console.log("x", h, v);
-<<<<<<< Updated upstream
 	if (h == v) { 
 		console.error("Nem játszhat maga ellen!");
 		triggerError("Nem játszhat maga ellen!");
 	}
-=======
-	if (h == v) { console.error("Nem játszhat maga ellen!"); }
->>>>>>> Stashed changes
 }
 
 function triggerError(message) {
@@ -132,11 +128,7 @@ $(document).ready(function () {
 		console.log(csapat)
 		if (sameteams(hazai.value, vendeg.value)) $("#hazaiselect").val("").change();
 		let player = document.getElementById("hazaiplayer");
-<<<<<<< Updated upstream
-		$('#hazaipalya').empty()
-=======
-		$('#vendegpalya').empty()
->>>>>>> Stashed changes
+		$('#hazaiplayer').empty()
 		palyaplayershaza = 0;
 		player.innerHTML = csapat["Jatekosok"]
 	})
@@ -145,9 +137,12 @@ $(document).ready(function () {
 		let val2 = $("#vendegselect option:selected").val();
 		let csapat1 = ajax_post("kosar.php", `ID_CSAPAT=${val2}`, 1)
 		console.log(csapat1)
-		if (sameteams(hazai.value, vendeg.value)) $("#vendegselect").val("").change();
 		let player1 = document.getElementById("vendegplayer");
-		$('#vendegpalya').empty()
+		if (sameteams(hazai.value, vendeg.value)) {
+			hazai.value = 0;
+			$("#vendegplayer").empty();
+			$('#vendegpalya').empty()
+		}
 		palyaplayersvendeg = 0;
 		player1.innerHTML = csapat1["Jatekosok"]
 	})
