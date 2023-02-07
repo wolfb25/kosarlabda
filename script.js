@@ -94,10 +94,14 @@ function ajax_post(urlsor, data, tipus) {     // !! változás: data
 
 function sameteams(h, v) {
 	//console.log("x", h, v);
+<<<<<<< Updated upstream
 	if (h == v) { 
 		console.error("Nem játszhat maga ellen!");
 		triggerError("Nem játszhat maga ellen!");
 	}
+=======
+	if (h == v) { console.error("Nem játszhat maga ellen!"); }
+>>>>>>> Stashed changes
 }
 
 function triggerError(message) {
@@ -128,7 +132,11 @@ $(document).ready(function () {
 		console.log(csapat)
 		if (sameteams(hazai.value, vendeg.value)) $("#hazaiselect").val("").change();
 		let player = document.getElementById("hazaiplayer");
+<<<<<<< Updated upstream
 		$('#hazaipalya').empty()
+=======
+		$('#vendegpalya').empty()
+>>>>>>> Stashed changes
 		palyaplayershaza = 0;
 		player.innerHTML = csapat["Jatekosok"]
 	})
