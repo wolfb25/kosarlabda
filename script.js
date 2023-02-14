@@ -1,8 +1,6 @@
 var minutes = 10;
 var seconds = 0;
 var time;
-var hazai_pontok = 0;
-var vendég_pontok = 0;
 var stopper_running = false;
 var negyedek = 1;
 
@@ -24,6 +22,21 @@ function timer() {
 		document.getElementById("negyedelo").textContent = (negyedek + ". negyed");
 	}, 100);
 	else clearInterval(szamolas);
+}
+
+/*------------------------------*/
+var hazai_pontok = 0;
+var vendég_pontok = 0;
+let hazaipont = document.getElementById("pontszam-hazai");
+let vendegpont = document.getElementById("pontszam-vendeg");
+
+function pontozoh(szam) { 
+	hazai_pontok += hazaipont.value
+	console.log(hazai_pontok);
+}
+
+function pontozov() {
+	// vendég_pontok += ;
 }
 
 /*------------------------------*/
@@ -49,15 +62,16 @@ function hazaipalyara() {
 	if (palyaplayershaza == maxplayershaza) {
 		var hazaivalasztottpalya = hazaip.options[hazaip.selectedIndex].text;
 		var hazaivalasztottkispad = hazai2.options[hazai2.selectedIndex].text;
-		let playeraddhcsere = document.createElement("option");
-		hazaip.add(hazaivalasztottkispad);
-		playeraddhcsere.text = hazaivalasztottkispad;
-		playeraddhcsere.value = palyaplayershaza;
-		hazai2.add(hazaivalasztottpalya);
-		playeraddhcsere.text = hazaivalasztottpalya;
-		playeraddhcsere.value = hazai2.lenght + 1;
-		hazai2.remove(hazaivalasztottkispad);
-		hazaip.remove(hazaivalasztottpalya);
+		let playeraddhkcsere = document.createElement("option");
+		let playeraddhpcsere = document.createElement("option");
+		hazaip.add(playeraddhpcsere);
+		playeraddhpcsere.text = hazaivalasztottkispad;
+		playeraddhpcsere.value = palyaplayershaza;
+		hazai2.add(playeraddhkcsere);
+		playeraddhkcsere.text = hazaivalasztottpalya;
+		playeraddhkcsere.value = hazai2.lenght + 1;
+		hazai2.remove(hazai2.selectedIndex);
+		hazaip.remove(hazaip.selectedIndex);
 	}
 }
 
@@ -75,7 +89,18 @@ function vendegpalyara() {
 		palyaplayersvendeg++;
 	}
 	if (palyaplayersvendeg == maxplayersvendeg) {
-		
+		var vendegvalasztottpalya = vendegp.options[vendegp.selectedIndex].text;
+		var vendegvalasztottkispad = vendeg2.options[vendeg2.selectedIndex].text;
+		let playeraddvkcsere = document.createElement("option");
+		let playeraddvpcsere = document.createElement("option");
+		vendegp.add(playeraddvpcsere);
+		playeraddvpcsere.text = vendegvalasztottkispad;
+		playeraddvpcsere.value = palyaplayersvendeg;
+		vendeg2.add(playeraddvkcsere);
+		playeraddvkcsere.text = vendegvalasztottpalya;
+		playeraddvkcsere.value = vendeg2.lenght + 1;
+		vendeg2.remove(vendeg2.selectedIndex);
+		vendegp.remove(vendegp.selectedIndex);
 	}
 }
 
