@@ -1,30 +1,27 @@
-var minutes = 10;
+var minutes = 0;
 var seconds = 0;
 var time;
 var hazai_pontok = 0;
 var vendég_pontok = 0;
-var stopper_running = false;
-var negyedek = 1;
 
 /*-----------------------*/
-function timer() {
-	stopper_running = !stopper_running;
-	document.getElementById("timerButton").value = (stopper_running ? "STOP" : "START");
-	if (stopper_running) szamolas = setInterval(() => {
-		seconds -= 0.1; seconds = seconds.toFixed(1);
-		if (minutes == 0 && seconds <= 0) { 
-			clearInterval(szamolas);
-			stopper_running = false;
-			minutes = 10;
-			seconds = 0;
-			negyedek++;
-		}
-		if (seconds <= 0 && stopper_running) { --minutes; seconds = 59.9; }
-		document.getElementById("szamlalo").textContent = minutes + ":" + seconds;
-		document.getElementById("negyedelo").textContent = (negyedek + ". negyed");
-	}, 5);
-	else clearInterval(szamolas);
+function timedCount() {
+	document.getElementById('szamlalo').textContent = minutes + ":" + seconds;
+	//document.getElementById('hazai').textContent = kosar.php?request=csapatok;
+	document.getElementById('negyedelo').textContent = (((minutes / 15) | 0) + 1) + ". negyed";
+	++seconds;
+	if (seconds % 60 == 0) { ++minutes; seconds = 0; }
+	time = setTimeout("timedCount()", 1000);
+	if (minutes % 15 == 0 && seconds == 0) { 
+		minutes = Math.round(minutes / 15) * 15;
+		seconds = 0;
+		clearTimeout(time);
+	}
+
 }
+
+function doTimer() { timedCount(); }
+function stopTimer() { clearTimeout(time); }
 
 /*------------------------------*/
 var maxplayershaza = 5;
