@@ -113,9 +113,9 @@ function sameteams(h, v) {
 
 function triggerError(message) {
 	content = document.getElementById("errorMessageContent");
+	content.innerHTML = "Unknown error!";
 	content.innerHTML = message;
 	$("#errorMessage").modal("show");
-	content.innerHTML = "Unknown error!";
 }
 /*-----------------------------*/
 $(document).ready(function () {
