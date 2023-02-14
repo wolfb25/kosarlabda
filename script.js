@@ -22,7 +22,7 @@ function timer() {
 		if (seconds <= 0 && stopper_running) { --minutes; seconds = 59.9; }
 		document.getElementById("szamlalo").textContent = minutes + ":" + seconds;
 		document.getElementById("negyedelo").textContent = (negyedek + ". negyed");
-	}, 5);
+	}, 100);
 	else clearInterval(szamolas);
 }
 
