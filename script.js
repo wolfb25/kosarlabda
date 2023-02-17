@@ -26,19 +26,22 @@ function timer() {
 
 /*------------------------------*/
 var hazai_pontok = 0;
-var vendég_pontok = 0;
-let hazaipont = document.getElementById("pontszam-hazai");
-let vendegpont = document.getElementById("pontszam-vendeg");
+var vendeg_pontok = 0;
 
 function pontozoh(szam) { 
-	hazai_pontok += hazaipont.value;
-	console.log(hazai_pontok);
+	let hazaipont = document.getElementById("pontszam-hazai");
+	hazai_pontok += Number(hazaipont.value);
+	console.log("hazai:" + hazai_pontok);
 }
 
 function pontozov() {
-	// vendég_pontok += ;
+	var vendegpont = document.getElementById("pontszam-vendeg");
+	vendeg_pontok += Number(vendegpont.value);
+	console.log("vendeg:" + vendeg_pontok);
 }
 
+function ponthazai() { pontozoh(); }
+function pontvendeg() { pontozov(); }
 /*------------------------------*/
 var maxplayershaza = 5;
 var palyaplayershaza = 0;
