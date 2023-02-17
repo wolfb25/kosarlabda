@@ -9,7 +9,7 @@ function timer() {
 	stopper_running = !stopper_running;
 	document.getElementById("timerButton").value = (stopper_running ? "STOP" : "START");
 	if (stopper_running) szamolas = setInterval(() => {
-		seconds -= 0.1; seconds = seconds.toFixed(1);
+		seconds -= 0.01; seconds = seconds.toFixed(2);
 		if (minutes == 0 && seconds <= 0) { 
 			clearInterval(szamolas);
 			stopper_running = false;
@@ -17,10 +17,10 @@ function timer() {
 			seconds = 0;
 			negyedek++;
 		}
-		if (seconds <= 0 && stopper_running) { --minutes; seconds = 59.9; }
+		if (seconds <= 0 && stopper_running) { --minutes; seconds = 59.99; }
 		document.getElementById("szamlalo").textContent = minutes + ":" + seconds;
 		document.getElementById("negyedelo").textContent = (negyedek + ". negyed");
-	}, 100);
+	}, 10);
 	else clearInterval(szamolas);
 }
 
