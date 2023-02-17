@@ -33,37 +33,27 @@
 		</div>
 	</div>
 	<div class="row m-0">
-		<div class="col-lg-10 bg-primary">
+		<div class="col-lg-10 p-0 bg-primary">
 			<h1 class="text-center">Kosárlabda mérkőzés jegyzőkönyv</h1>
-			<div class="row">
+			<div class="row px-3">
 				<div class="col-md-6">
-					<!-- <div class="btn-group d-flex justify-content-center">
-						<button type="button" class="btn btn-light dropdown-toggle mb-3" data-bs-toggle="dropdown" style="max-width: 200px;">Hazai</button>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">1. opció</a>
-						</div>
-					</div> -->
 					<select class="form-select mb-3 mx-auto" style="max-width: 250px;" id="hazaiselect">
 						<option value="default">Hazai: Válasszon csapatot</option>
 					</select>
 					<div class="d-flex justify-content-around mb-3" style="height: 150px;">
 						<div class="col-5">
-							<select multiple class="form-select h-100" id="hazaiplayer">
-							</select>
+							<select multiple class="form-select h-100" id="hazaiplayer"></select>
 						</div>
-						
 						<div class="col-1 d-flex align-content-center justify-content-center">
 							<button type="button" class="btn btn-danger mb-3 mt-1" onClick="hazaicsere()">⇋</button>
 						</div>
 						<div class="col-5">
-							<select multiple class="form-select h-100" id="hazaipalya">
-								<!-- pályán levő játékosok -->
-							</select>
+							<select multiple class="form-select h-100" id="hazaipalya"></select>
 						</div>
 					</div>
 					<div class="d-flex flex-row mb-3">
 						<p class="h5">Pont hozzáadás: </p>
-						<input type="number" id="pontszam-hazai" name="pontszam" min="0" max="3" style="width: 75px;">
+						<input type="number" id="pontszam-hazai" name="pontszam" value=0 min="0" max="3" style="width: 75px;">
 						<button type="button" id="pontadohazai" onClick="ponthazai()" class="btn btn-success">✔</button>
 					</div>
 				</div>
@@ -73,24 +63,24 @@
 					</select>
 					<div class="d-flex justify-content-around mb-3" style="height: 150px;">
 						<div class="col-5">
-							<select multiple class="form-select h-100" id="vendegplayer">
-							</select>
+							<select multiple class="form-select h-100" id="vendegplayer"></select>
 						</div>
 						<div class="col-1 d-flex align-content-center justify-content-center">
 							<button type="button" class="btn btn-danger mb-3 mt-1" onClick="vendegcsere()">⇋</button>
 						</div>
 						<div class="col-5">
-							<select multiple class="form-select h-100" id="vendegpalya">
-								<!-- pályán levő játékosok -->
-							</select>
+							<select multiple class="form-select h-100" id="vendegpalya"></select>
 						</div>
 					</div>
 					<div class="d-flex flex-row mb-3">
 						<p class="h5">Pont hozzáadás: </p>
-						<input type="number" id="pontszam-vendeg" name="pontszam" min="0" max="3" style="width: 75px;">
+						<input type="number" id="pontszam-vendeg" name="pontszam" value=0 min="0" max="3" style="width: 75px;">
 						<button type="button" id="pontadovendeg" onClick="pontvendeg()" class="btn btn-success">✔</button>
 					</div>
 				</div>
+			</div>
+			<div class="col-12 bg-black">
+				Log helye
 			</div>
 		</div>
 		<div class="col-lg-2 bg-info">
