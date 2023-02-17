@@ -31,7 +31,7 @@ let hazaipont = document.getElementById("pontszam-hazai");
 let vendegpont = document.getElementById("pontszam-vendeg");
 
 function pontozoh(szam) { 
-	hazai_pontok += hazaipont.value
+	hazai_pontok += hazaipont.value;
 	console.log(hazai_pontok);
 }
 
