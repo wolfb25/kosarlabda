@@ -40,7 +40,8 @@ function pontozoh(szam) {
 		let hazaip = document.getElementById("hazaipalya");
 		var hazaivalasztottpalya = hazaip.options[hazaip.selectedIndex].text;
 		hazai_pontok += Number(hazaipont.value);
-		log("Hazai pontszerzés: " + hpsz, hazaivalasztottpalya)
+		if (hpsz > 0) log("Hazai pontszerzés: " + hpsz, hazaivalasztottpalya);
+		else log("Hazai kihagyott pontszerzés", hazaivalasztottpalya);
 		hazaipir.innerHTML = hazai_pontok;
 	}
 	else {
@@ -57,7 +58,8 @@ function pontozov() {
 		let vendegp = document.getElementById("vendegpalya");
 		var vendegvalasztottpalya = vendegp.options[vendegp.selectedIndex].text;
 		vendeg_pontok += Number(vpsz);
-		log("Vendég pontszerzés: " + vpsz, vendegvalasztottpalya)
+		if (vpsz > 0) log("Vendég pontszerzés: " + vpsz, vendegvalasztottpalya);
+		else log("Vendég kihagyott pontszerzés", vendegvalasztottpalya)
 		vendegpir.innerHTML = vendeg_pontok;
 	}
 	else {
@@ -138,6 +140,24 @@ function vendegpalyara() {
 
 function hazaicsere () { hazaipalyara(); }
 function vendegcsere () { vendegpalyara(); }
+/*--------------------------------------------------*/
+function hazaikick() {
+	let hazaip = document.getElementById("hazaipalya");
+	var hazaivalasztottpalya = hazaip.options[hazaip.selectedIndex].text;
+	log("Hazai eltiltás", hazaivalasztottpalya)
+	hazaip.remove(hazaip.selectedIndex);
+	--maxplayershaza;
+	--palyaplayershaza;
+} 
+
+function vendegkick() {
+	let vendegp = document.getElementById("vendegpalya");
+	var vendegvalasztottpalya = vendegp.options[vendegp.selectedIndex].text;
+	log("Vendég eltiltás", vendegvalasztottpalya)
+	vendegp.remove(vendegp.selectedIndex);
+	--maxplayersvendeg;
+	--palyaplayersvendeg;
+}
 /*--------------------------------------------------*/
 function ajax_get(urlsor, hova, tipus, aszinkron) {
 	$.ajax({
