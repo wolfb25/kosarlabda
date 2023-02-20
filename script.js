@@ -24,10 +24,10 @@ function timer() {
 	else clearInterval(szamolas);
 }
 
+/*-------------------------------*/
 function log(description, player1 = "---", player2 = "---") {
 	if (description !== undefined) $("#log_content").append(`<tr><td>${document.getElementById("szamlalo").textContent}</td><td>${player1}</td><td>${player2}</td><td>${description}</td></tr>`);
 }
-
 /*------------------------------*/
 var hazai_pontok = 0;
 var vendeg_pontok = 0;
@@ -201,7 +201,7 @@ function triggerError(message) {
 $(document).ready(function () {
 	var listItems = "";
 	var k_json = ajax_post("kosar.php", "csapatok=1", 1);               // JSON!
-	//console.log(k_json);
+	console.log(k_json);
 	let hazai = document.getElementById("hazaiselect");
 	let vendeg = document.getElementById("vendegselect");
 	k_json.forEach(e => {
@@ -229,6 +229,7 @@ $(document).ready(function () {
 			$('#hazaiplayer').empty()
 			palyaplayershaza = 0;
 			player.innerHTML = csapat["Jatekosok"]
+			console.log(k_json);
 		}
 	})
 
