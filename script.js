@@ -191,6 +191,10 @@ function sameteams(h, v) {
 	}
 }
 
+function triggerHelp() {
+	$("#helpMessage").modal("show");
+}
+
 function triggerError(message) {
 	content = document.getElementById("errorMessageContent");
 	content.innerHTML = "Unknown error!";
