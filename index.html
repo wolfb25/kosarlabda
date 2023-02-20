@@ -41,16 +41,12 @@
 						<option value="default">Hazai: Válasszon csapatot</option>
 					</select>
 					<div class="d-flex justify-content-around mb-3" style="height: 150px;">
-						<div class="col-5">
-							<select multiple class="form-select h-100" id="hazaiplayer"></select>
+						<div class="col-5"><select multiple class="form-select h-100" id="hazaiplayer"></select></div>
+						<div class="col-2 d-flex flex-column align-content-center justify-content-around">
+							<button type="button" class="btn btn-danger w-75" onClick="hazaicsere()">⇋</button>
+							<button type="button" class="btn btn-danger w-75" onClick="hazaikick()">X</button>
 						</div>
-						<div class="col-1 d-flex flex-column align-content-around">
-							<button type="button" class="btn btn-danger w-100" onClick="hazaicsere()">⇋</button>
-							<button type="button" class="btn btn-danger w-100" onClick="hazaikick()">X</button>
-						</div>
-						<div class="col-5">
-							<select multiple class="form-select h-100" id="hazaipalya"></select>
-						</div>
+						<div class="col-5"><select multiple class="form-select h-100" id="hazaipalya"></select></div>
 					</div>
 					<div class="d-flex flex-row mb-3 mx-auto justify-content-center">
 						<p class="h5 py-2 m-0">Pont hozzáadás: </p>
@@ -67,9 +63,9 @@
 						<div class="col-5">
 							<select multiple class="form-select h-100" id="vendegplayer"></select>
 						</div>
-						<div class="col-1 d-flex flex-column align-content-around">
-							<button type="button" class="btn btn-danger w-100" onClick="vendegcsere()">⇋</button>
-							<button type="button" class="btn btn-danger w-100" onClick="vendegkick()">X</button>
+						<div class="col-2 d-flex flex-column align-content-center justify-content-around">
+							<button type="button" class="btn btn-danger w-75" onClick="vendegcsere()">⇋</button>
+							<button type="button" class="btn btn-danger w-75" onClick="vendegkick()">X</button>
 						</div>
 						<div class="col-5">
 							<select multiple class="form-select h-100" id="vendegpalya"></select>
