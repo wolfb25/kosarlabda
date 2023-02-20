@@ -18,8 +18,8 @@ function timer() {
 			negyedek++;
 		}
 		if (seconds <= 0 && stopper_running) { --minutes; seconds = 59.99; }
-		document.getElementById("szamlalo").textContent = minutes + ":" + seconds;
-		document.getElementById("negyedelo").textContent = (negyedek + ". negyed");
+		document.getElementById("szamlalo").textContent = negyedek < 5 ? (minutes + ":" + seconds) : "0:0.00";
+		document.getElementById("negyedelo").textContent = negyedek < 5 ? (negyedek + ". negyed") : "Meccs vége!";
 	}, 10);
 	else clearInterval(szamolas);
 }
