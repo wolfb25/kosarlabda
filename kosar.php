@@ -233,7 +233,7 @@ $játékosok = array(
    $s1 = "{\"Jatekosok\":\"";
    foreach($játékosok as $key1) { 
       if($_POST["ID_CSAPAT"] == $key1[0]){
-         $s1 .= "<option>".$key1[2]."</option>";
+         $s1 .= "<option>".$key1[1] ."  " .$key1[2]."</option>";
       }
    }
    $s1 .= "\"}";
