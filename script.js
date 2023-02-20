@@ -40,7 +40,7 @@ function pontozoh(szam) {
 		let hazaip = document.getElementById("hazaipalya");
 		var hazaivalasztottpalya = hazaip.options[hazaip.selectedIndex].text;
 		hazai_pontok += Number(hazaipont.value);
-		console.log("hazai:" + hazai_pontok + "   " + hazaivalasztottpalya);
+		log("Hazai pontszerzés: " + hpsz, hazaivalasztottpalya)
 		hazaipir.innerHTML = hazai_pontok;
 	}
 	else {
@@ -57,7 +57,7 @@ function pontozov() {
 		let vendegp = document.getElementById("vendegpalya");
 		var vendegvalasztottpalya = vendegp.options[vendegp.selectedIndex].text;
 		vendeg_pontok += Number(vpsz);
-		console.log("vendeg:" + vendeg_pontok + "   " + vendegvalasztottpalya);
+		log("Vendég pontszerzés: " + vpsz, vendegvalasztottpalya)
 		vendegpir.innerHTML = vendeg_pontok;
 	}
 	else {
@@ -99,8 +99,10 @@ function hazaipalyara() {
 		hazai2.add(playeraddhkcsere);
 		playeraddhkcsere.text = hazaivalasztottpalya;
 		playeraddhkcsere.value = hazai2.lenght + 1;
+		log("Hazai csere", hazaivalasztottpalya, hazaivalasztottkispad);
 		hazai2.remove(hazai2.selectedIndex);
 		hazaip.remove(hazaip.selectedIndex);
+		
 	}
 }
 
@@ -128,6 +130,7 @@ function vendegpalyara() {
 		vendeg2.add(playeraddvkcsere);
 		playeraddvkcsere.text = vendegvalasztottpalya;
 		playeraddvkcsere.value = vendeg2.lenght + 1;
+		log("Vendég csere", vendegvalasztottpalya, vendegvalasztottkispad);
 		vendeg2.remove(vendeg2.selectedIndex);
 		vendegp.remove(vendegp.selectedIndex);
 	}
