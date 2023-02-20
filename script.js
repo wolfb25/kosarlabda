@@ -29,15 +29,37 @@ var hazai_pontok = 0;
 var vendeg_pontok = 0;
 
 function pontozoh(szam) { 
+	let hazaip = document.getElementById("hazaipalya");
+	var hazaivalasztottpalya = hazaip.options[hazaip.selectedIndex].text;
 	let hazaipont = document.getElementById("pontszam-hazai");
-	hazai_pontok += Number(hazaipont.value);
-	console.log("hazai:" + hazai_pontok);
+	var hazaipir = document.getElementById("pszamhazai");
+	var hpsz = hazaipont.value
+	if (hpsz <= 3 && palyaplayershaza > 0) {
+		hazai_pontok += Number(hazaipont.value);
+		console.log("hazai:" + hazai_pontok + "   " + hazaivalasztottpalya);
+		hazaipir.innerHTML = hazai_pontok;
+	}
+	else {
+		if (hpsz <=3 ) triggerError("Túl magas pontszám!")
+		if (palyaplayershaza <= 0) triggerError("Nincs a pályán játékos!")
+	}
 }
 
 function pontozov() {
-	var vendegpont = document.getElementById("pontszam-vendeg");
-	vendeg_pontok += Number(vendegpont.value);
-	console.log("vendeg:" + vendeg_pontok);
+	let vendegp = document.getElementById("vendegpalya");
+	var vendegvalasztottpalya = vendegp.options[vendegp.selectedIndex].text;
+	let vendegpont = document.getElementById("pontszam-vendeg");
+	var vendegpir = document.getElementById("pszamvendeg");
+	var vpsz = vendegpont.value;
+	if (vpsz <= 3 && palyaplayersvendeg > 0) {
+		vendeg_pontok += Number(vpsz);
+		console.log("vendeg:" + vendeg_pontok + "   " + vendegvalasztottpalya);
+		vendegpir.innerHTML = vendeg_pontok;
+	}
+	else {
+		if (vpsz <=3 ) triggerError("Túl magas pontszám!")
+		if (palyaplayersvendeg <= 0) triggerError("Nincs a pályán játékos!")
+	}
 }
 
 function ponthazai() { pontozoh(); }
@@ -53,14 +75,12 @@ function hazaipalyara() {
 	let hazaip = document.getElementById("hazaipalya");
 	if (palyaplayershaza < maxplayershaza) {
 		var hazaivalasztott = hazai2.options[hazai2.selectedIndex].text;
-		console.log(hazaivalasztott);
 		let playeradd = document.createElement("option");
 		hazaip.add(playeradd);
 		hazai2.remove(hazai2.selectedIndex);
 		playeradd.text = hazaivalasztott;
 		playeradd.value = palyaplayershaza;
 		palyaplayershaza++;
-		console.log(palyaplayershaza);
 	}
 	if (palyaplayershaza == maxplayershaza) {
 		var hazaivalasztottpalya = hazaip.options[hazaip.selectedIndex].text;
@@ -83,7 +103,6 @@ function vendegpalyara() {
 	let vendegp = document.getElementById("vendegpalya");
 	if (palyaplayersvendeg < maxplayersvendeg) {
 		var vendegvalasztott = vendeg2.options[vendeg2.selectedIndex].text;
-		console.log(vendegvalasztott);
 		let playeradd2 = document.createElement("option");
 		vendegp.add(playeradd2);
 		vendeg2.remove(vendeg2.selectedIndex);
