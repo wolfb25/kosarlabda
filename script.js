@@ -24,8 +24,8 @@ function timer() {
 	else clearInterval(szamolas);
 }
 
-function log(description, player1, player2 = "---") {
-	$("#log_content").append(`<tr><td>${document.getElementById("szamlalo").textContent}</td><td>${player1}</td><td>${player2}</td><td>${description}</td></tr>`);
+function log(description, player1 = "---", player2 = "---") {
+	if (description !== undefined) $("#log_content").append(`<tr><td>${document.getElementById("szamlalo").textContent}</td><td>${player1}</td><td>${player2}</td><td>${description}</td></tr>`);
 }
 
 /*------------------------------*/
