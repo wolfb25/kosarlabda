@@ -36,7 +36,7 @@ function pontozoh(szam) {
 	let hazaipont = document.getElementById("pontszam-hazai");
 	var hazaipir = document.getElementById("pszamhazai");
 	var hpsz = hazaipont.value
-	if (hpsz <= 3 && palyaplayershaza > 0) {
+	if (hpsz <= 3 && hpsz >= 0 && palyaplayershaza > 0) {
 		let hazaip = document.getElementById("hazaipalya");
 		var hazaivalasztottpalya = hazaip.options[hazaip.selectedIndex].text;
 		hazai_pontok += Number(hazaipont.value);
@@ -45,7 +45,7 @@ function pontozoh(szam) {
 		hazaipir.innerHTML = hazai_pontok;
 	}
 	else {
-		if (hpsz > 3 ) triggerError("Túl magas pontszám!")
+		if (hpsz > 3 || hpsz < 0) triggerError("A pontszám 0 és 3 között lehet!")
 		if (palyaplayershaza <= 0) triggerError("Nincs a pályán játékos!")
 	}
 }
@@ -54,7 +54,7 @@ function pontozov() {
 	let vendegpont = document.getElementById("pontszam-vendeg");
 	var vendegpir = document.getElementById("pszamvendeg");
 	var vpsz = vendegpont.value;
-	if (vpsz <= 3 && palyaplayersvendeg > 0) {
+	if (vpsz <= 3 && vpsz >= 0 && palyaplayersvendeg > 0) {
 		let vendegp = document.getElementById("vendegpalya");
 		var vendegvalasztottpalya = vendegp.options[vendegp.selectedIndex].text;
 		vendeg_pontok += Number(vpsz);
@@ -63,7 +63,7 @@ function pontozov() {
 		vendegpir.innerHTML = vendeg_pontok;
 	}
 	else {
-		if (vpsz > 3 ) triggerError("Túl magas pontszám!")
+		if (vpsz > 3 || vpsz < 0) triggerError("A pontszám 0 és 3 között lehet!")
 		if (palyaplayersvendeg <= 0) triggerError("Nincs a pályán játékos!")
 	}
 }
@@ -226,6 +226,7 @@ $(document).ready(function () {
 			$('#hazaipalya').empty()
 		}
 		else {
+			$('#hazaipalya').empty()
 			let val1 = $("#hazaiselect option:selected").val();
 			let csapat = ajax_post("kosar.php", `ID_CSAPAT=${val1}`, 1)
 			console.log(csapat)
@@ -244,6 +245,7 @@ $(document).ready(function () {
 			$('#vendegpalya').empty()
 		}
 		else {
+			$('#vendegpalya').empty()
 			let val2 = $("#vendegselect option:selected").val();
 			let csapat1 = ajax_post("kosar.php", `ID_CSAPAT=${val2}`, 1)
 			console.log(csapat1)
