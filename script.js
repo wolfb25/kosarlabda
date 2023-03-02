@@ -1,6 +1,5 @@
 var minutes = 10;
 var seconds = 0;
-var time;
 var stopper_running = false;
 var negyedek = 1;
 
@@ -26,6 +25,16 @@ function timer() {
 	} else triggerError("Nem indítható mérkőzés amíg nincs elég (min. 3-3) játékos a pályán. ");
 }
 
+function timerreset() {
+	if (stopper_running) timer();
+	minutes = 10;
+	seconds = 0;
+	negyedek = 1;
+	document.getElementById("timerButton").value = "START";
+	document.getElementById("szamlalo").textContent = "10:0.00";
+	document.getElementById("negyedelo").textContent = "1. negyed";
+}
+
 /*-------------------------------*/
 function log(description, player1 = "---", player2 = "---") {
 	if (description !== undefined) $("#log_content").append(`<tr><td>${document.getElementById("szamlalo").textContent}</td><td>${player1}</td><td>${player2}</td><td>${description}</td></tr>`);
@@ -39,7 +48,7 @@ function pontozoh(szam) {
 	var hazaipir = document.getElementById("pszamhazai");
 	var hpsz = hazaipont.value;
 	
-	if (hpsz % 1 == 0 && hpsz <= 3 && hpsz >= 0 && palyaplayershaza >= 3) {
+	if (hpsz % 1 == 0 && hpsz <= 3 && hpsz >= 0 && palyaplayershaza >= 3 && palyaplayersvendeg >= 3) {
 		let hazaip = document.getElementById("hazaipalya");
 		var hazaivalasztottpalya = hazaip.options[hazaip.selectedIndex].text;
 		hazai_pontok += Number(hazaipont.value);
@@ -50,7 +59,8 @@ function pontozoh(szam) {
 	else {
 		if (hpsz % 1 != 0) triggerError("Csak egész szám lehet!")
 		if (hpsz > 3 || hpsz < 0) triggerError("A pontszám 0 és 3 között lehet!")
-		if (palyaplayershaza < 3) triggerError("Nincs a pályán elég játékos!")
+		if (palyaplayershaza < 3 || palyaplayersvendeg < 3) triggerError("Nincs a pályán elég játékos!")
+		if (palyaplayersvendeg < 3) triggerError("Nincs a vendég csapatnál elég játékos!")
 	}
 }
 
@@ -58,7 +68,7 @@ function pontozov() {
 	let vendegpont = document.getElementById("pontszam-vendeg");
 	var vendegpir = document.getElementById("pszamvendeg");
 	var vpsz = vendegpont.value;
-	if (vpsz % 1 == 0 && vpsz <= 3 && vpsz >= 0 && palyaplayersvendeg >= 3) {
+	if (vpsz % 1 == 0 && vpsz <= 3 && vpsz >= 0 && palyaplayersvendeg >= 3 && palyaplayershaza >=3) {
 		let vendegp = document.getElementById("vendegpalya");
 		var vendegvalasztottpalya = vendegp.options[vendegp.selectedIndex].text;
 		vendeg_pontok += Number(vpsz);
@@ -70,6 +80,7 @@ function pontozov() {
 		if (vpsz % 1 != 0) triggerError("Csak egész szám lehet!")
 		if (vpsz > 3 || vpsz < 0) triggerError("A pontszám 0 és 3 között lehet!")
 		if (palyaplayersvendeg < 3) triggerError("Nincs a pályán játékos!")
+		if (palyaplayershaza < 3) triggerError("Nincs a hazai csapatnál elég játékos!")
 	}
 }
 /*------------------------------*/
@@ -226,10 +237,11 @@ $(document).ready(function () {
 	});
 
 	$("#hazaiselect").change(function(){
+		timerreset();
 		if (sameteams(hazai.value, vendeg.value)) {
 			hazai.value = "default";
 			$("#hazaiplayer").empty();
-			$('#hazaipalya').empty()
+			$('#hazaipalya').empty();
 		}
 		else {
 			$('#hazaipalya').empty()
@@ -245,10 +257,11 @@ $(document).ready(function () {
 	})
 
 	$("#vendegselect").change(function(){
+		timerreset();
 		if (sameteams(hazai.value, vendeg.value)) {
 			vendeg.value = "default";
 			$("#vendegplayer").empty();
-			$('#vendegpalya').empty()
+			$('#vendegpalya').empty();
 		}
 		else {
 			$('#vendegpalya').empty()
